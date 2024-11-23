@@ -1,0 +1,20 @@
+Hola,Inglés,Hello
+Adios,Inglés,Goodbye
+Gracias,Inglés,Thank you
+Por favor,Inglés,Please
+Perro,Inglés,Dog
+Gato,Inglés,Cat
+Casa,Inglés,House
+Agua,Inglés,Water
+Comida,Inglés,Food
+Trabajo,Inglés,Work
+Amor,Inglés,Love
+Libro,Inglés,Book
+Amigo,Inglés,Friend
+Coche,Inglés,Car
+Escuela,Inglés,School
+Familia,Inglés,Family
+Puerta,Inglés,Door
+Montana,Inglés,Mountain
+Rio,Inglés,River
+Sol,Inglés,Sun
