@@ -1,0 +1,20 @@
+Hola,Francés,Bonjour
+Adios,Francés,Au revoir
+Gracias,Francés,Merci
+Por favor,Francés,S'il vous plaît
+Perro,Francés,Chien
+Gato,Francés,Chat
+Casa,Francés,Maison
+Agua,Francés,Eau
+Comida,Francés,Nourriture
+Trabajo,Francés,Travail
+Amor,Francés,Amour
+Libro,Francés,Livre
+Amigo,Francés,Ami
+Coche,Francés,Voiture
+Escuela,Francés,Ecole
+Familia,Francés,Famille
+Puerta,Francés,Porte
+Montana,Francés,Montagne
+Rio,Francés,Fleuve
+Sol,Francés,Soleil
