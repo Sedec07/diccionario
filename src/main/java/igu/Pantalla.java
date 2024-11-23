@@ -1,4 +1,12 @@
 package igu;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import logica.Diccionario;
+
+import javax.swing.table.DefaultTableModel;
+//import static logica.Diccionario.leerArchivoAMatriz;
 
 /**
  *
@@ -9,7 +17,14 @@ public class Pantalla extends javax.swing.JFrame {
     /**
      * Creates new form Pantalla
      */
+    private String[][] matriz;
+    private String[][] espanol_italiano;
+    private String[][] espanol_frances;
     public Pantalla() {
+        matriz =leerArchivoAMatriz("src/main/resources/traducciones.txt");
+        espanol_frances=leerArchivoAMatriz("src/main/resources/español_frances.txt");
+        espanol_italiano=leerArchivoAMatriz("src/main/resources/español_italiano.txt");
+        
         initComponents();
     }
 
@@ -230,6 +245,11 @@ public class Pantalla extends javax.swing.JFrame {
 
         idioma_origen.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         idioma_origen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "...", "Inglés", "Español", "Francés", "Italiano" }));
+        idioma_origen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idioma_origenActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -483,6 +503,13 @@ public class Pantalla extends javax.swing.JFrame {
 
     private void Boton_TraducirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_TraducirActionPerformed
         // TODO add your handling code here:
+            String palabraIngresada = Palabra.getText();
+    String idiomaDestinoSeleccionado = (String) idioma_destino.getSelectedItem();
+    String idiomaOrigenSeleccionado = (String) idioma_origen.getSelectedItem();
+    
+    if (palabraIngresada.isEmpty() || idiomaDestinoSeleccionado.equals("...")) {
+        traduccion.setText("Por favor, ingrese una palabra y seleccione un idioma.");
+    } else {String resultado = buscarTraduccion(palabraIngresada, idiomaDestinoSeleccionado, idiomaOrigenSeleccionado);}
     }//GEN-LAST:event_Boton_TraducirActionPerformed
 
     private void Boton_LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_LimpiarActionPerformed
@@ -491,11 +518,63 @@ public class Pantalla extends javax.swing.JFrame {
         idioma_destino.setSelectedIndex(0);
         traduccion.setText("");
     }//GEN-LAST:event_Boton_LimpiarActionPerformed
+
+    private void idioma_origenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idioma_origenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idioma_origenActionPerformed
     // al iniciar se ocultan los contenedores
     public void ocultarLabel() {
     consulta.setVisible(false);
     agregar.setVisible(false);
     conteo.setVisible(false);
+    }
+
+
+//buscar traduccion
+private String buscarTraduccion(String palabra, String idiomaDestino, String idiomaOrigen) {
+    if(idiomaOrigen.equals("Español") && idiomaDestino.equals("Inglés") ){
+    for (String[] traduccion : matriz ) {
+        if (traduccion[0].equalsIgnoreCase(palabra) && traduccion[1].equalsIgnoreCase(idiomaDestino)) {
+            return traduccion[2];
+        }
+    }
+        
+    } else { if(idiomaOrigen.equals("Español") && idiomaDestino.equals("Italiano") ){
+        for (String[] traduccion : espanol_italiano ) {
+        if (traduccion[0].equalsIgnoreCase(palabra) && traduccion[1].equalsIgnoreCase(idiomaDestino)) {
+            return traduccion[2];
+        }
+    }
+    } else { if(idiomaOrigen.equals("Español") && idiomaDestino.equals("Francés")){
+    for (String[] traduccion : espanol_frances ) {
+        if (traduccion[0].equalsIgnoreCase(palabra) && traduccion[1].equalsIgnoreCase(idiomaDestino)) {
+            return traduccion[2];
+        }
+    }
+    }} }
+    for (String[] traduccion : matriz ) {
+        if (traduccion[0].equalsIgnoreCase(palabra) && traduccion[1].equalsIgnoreCase(idiomaDestino)) {
+            return traduccion[2];
+        }
+    }
+    return "No se encontró la traducción.";
+}
+public static String[][] leerArchivoAMatriz(String rutaArchivo) {
+        ArrayList<String[]> listaTemporal = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                // Dividir cada línea por la coma
+                String[] traduccion = linea.split(",");
+                listaTemporal.add(traduccion);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Convertir la lista en una matriz
+        String[][] matriz = new String[listaTemporal.size()][3];
+        return listaTemporal.toArray(matriz);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
