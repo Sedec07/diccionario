@@ -1,0 +1,20 @@
+Hola,Italiano,Ciao
+Adios,Italiano,Addio
+Gracias,Italiano,Grazie
+Por favor,Italiano,Per favore
+Perro,Italiano,Cane
+Gato,Italiano,Gatto
+Casa,Italiano,Casa
+Agua,Italiano,Acqua
+Comida,Italiano,Cibo
+Trabajo,Italiano,Lavoro
+Amor,Italiano,Amore
+Libro,Italiano,Libro
+Amigo,Italiano,Amico
+Coche,Italiano,Macchina
+Escuela,Italiano,Scuola
+Familia,Italiano,Famiglia
+Puerta,Italiano,Porta
+Montana,Italiano,Montagna
+Rio,Italiano,Fiume
+Sol,Italiano,Sole
