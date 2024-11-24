@@ -1,6 +1,8 @@
 package igu;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import logica.Diccionario;
@@ -66,12 +68,12 @@ public class Pantalla extends javax.swing.JFrame {
         traduccion = new javax.swing.JTextField();
         conteo = new javax.swing.JPanel();
         label4 = new java.awt.Label();
-        Palabra_origen1 = new javax.swing.JTextField();
+        numeroINGLES = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        Palabra_origen2 = new javax.swing.JTextField();
+        numeroFRANCES = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        Palabra_origen3 = new javax.swing.JTextField();
+        numeroITALIANO = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1000, 720));
@@ -358,12 +360,12 @@ public class Pantalla extends javax.swing.JFrame {
         label4.setMinimumSize(new java.awt.Dimension(40, 40));
         label4.setText("Conteo de Traducciones");
 
-        Palabra_origen1.setEditable(false);
-        Palabra_origen1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Palabra_origen1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Palabra_origen1.setText("5");
-        Palabra_origen1.setToolTipText("Escribe la palabra con mayuscula incial");
-        Palabra_origen1.setActionCommand("<Not Set>");
+        numeroINGLES.setEditable(false);
+        numeroINGLES.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        numeroINGLES.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        numeroINGLES.setText("5");
+        numeroINGLES.setToolTipText("Escribe la palabra con mayuscula incial");
+        numeroINGLES.setActionCommand("<Not Set>");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -373,23 +375,28 @@ public class Pantalla extends javax.swing.JFrame {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Francés");
 
-        Palabra_origen2.setEditable(false);
-        Palabra_origen2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Palabra_origen2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Palabra_origen2.setText("4");
-        Palabra_origen2.setToolTipText("Escribe la palabra con mayuscula incial");
-        Palabra_origen2.setActionCommand("<Not Set>");
+        numeroFRANCES.setEditable(false);
+        numeroFRANCES.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        numeroFRANCES.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        numeroFRANCES.setText("4");
+        numeroFRANCES.setToolTipText("Escribe la palabra con mayuscula incial");
+        numeroFRANCES.setActionCommand("<Not Set>");
+        numeroFRANCES.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numeroFRANCESActionPerformed(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Italiano");
 
-        Palabra_origen3.setEditable(false);
-        Palabra_origen3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Palabra_origen3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Palabra_origen3.setText("8");
-        Palabra_origen3.setToolTipText("Escribe la palabra con mayuscula incial");
-        Palabra_origen3.setActionCommand("<Not Set>");
+        numeroITALIANO.setEditable(false);
+        numeroITALIANO.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        numeroITALIANO.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        numeroITALIANO.setText("8");
+        numeroITALIANO.setToolTipText("Escribe la palabra con mayuscula incial");
+        numeroITALIANO.setActionCommand("<Not Set>");
 
         javax.swing.GroupLayout conteoLayout = new javax.swing.GroupLayout(conteo);
         conteo.setLayout(conteoLayout);
@@ -399,15 +406,15 @@ public class Pantalla extends javax.swing.JFrame {
                 .addContainerGap(78, Short.MAX_VALUE)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addComponent(Palabra_origen1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(numeroINGLES, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Palabra_origen2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(numeroFRANCES, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Palabra_origen3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(numeroITALIANO, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(336, 336, 336))
             .addGroup(conteoLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
@@ -424,15 +431,15 @@ public class Pantalla extends javax.swing.JFrame {
                     .addGroup(conteoLayout.createSequentialGroup()
                         .addGroup(conteoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(conteoLayout.createSequentialGroup()
-                                .addComponent(Palabra_origen2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(numeroFRANCES, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                 .addGap(2, 2, 2))
-                            .addComponent(Palabra_origen1)
+                            .addComponent(numeroINGLES)
                             .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(73, 73, 73))
                     .addGroup(conteoLayout.createSequentialGroup()
                         .addGroup(conteoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(Palabra_origen3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(numeroITALIANO, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
@@ -478,6 +485,15 @@ public class Pantalla extends javax.swing.JFrame {
             consulta.setVisible(false);
             conteo.setVisible(false);
         } else { if("Palabras totales".equals(menu_op.getSelectedItem())){
+            //contar palabras idiomas
+            int numeroingles = matriz.length;
+            int numeroitaliano = espanol_italiano.length;
+            int numerofrances = espanol_frances.length;
+            numeroINGLES.setText(String.valueOf(numeroingles));
+            numeroFRANCES.setText(String.valueOf(numerofrances));
+            numeroITALIANO.setText(String.valueOf(numeroitaliano));
+
+
             menu.setVisible(true);
             agregar.setVisible(false);
             consulta.setVisible(false);
@@ -492,7 +508,29 @@ public class Pantalla extends javax.swing.JFrame {
     }//GEN-LAST:event_Boton_ContinuarActionPerformed
 
     private void Boton_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_AgregarActionPerformed
-        // TODO add your handling code here:
+String palabraOrigen = Palabra_origen.getText();
+    String palabraTraducida = Palabra_traducida.getText();
+    String idiomaDestino = (String) idioma_traduccion.getSelectedItem();
+
+    if (!palabraOrigen.isEmpty() && !palabraTraducida.isEmpty() && !idiomaDestino.equals("...")) {
+        // Obtener la ruta del archivo según el idioma de destino
+        String rutaArchivo = obtenerRutaArchivo(idiomaDestino);
+
+        if (rutaArchivo != null) {
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(rutaArchivo, true))) {
+                // Escribir en el archivo la traducción
+                bw.write(palabraOrigen + "," + idiomaDestino + "," + palabraTraducida);
+                bw.newLine();
+                System.out.println("Palabra guardada correctamente.");
+            } catch (IOException e) {
+                System.err.println("Error al guardar la palabra: " + e.getMessage());
+            }
+        } else {
+            System.out.println("No se encontró una ruta válida para el idioma seleccionado.");
+        }
+    } else {
+        System.out.println("Por favor, complete todos los campos.");
+    }
     }//GEN-LAST:event_Boton_AgregarActionPerformed
 
     private void Boton_Limpiar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_Limpiar2ActionPerformed
@@ -522,6 +560,10 @@ public class Pantalla extends javax.swing.JFrame {
     private void idioma_origenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idioma_origenActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_idioma_origenActionPerformed
+
+    private void numeroFRANCESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroFRANCESActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_numeroFRANCESActionPerformed
     // al iniciar se ocultan los contenedores
     public void ocultarLabel() {
     consulta.setVisible(false);
@@ -576,6 +618,33 @@ public static String[][] leerArchivoAMatriz(String rutaArchivo) {
         String[][] matriz = new String[listaTemporal.size()][3];
         return listaTemporal.toArray(matriz);
     }
+//  aqui se define la funcion para permitir guardar palabras
+public static void guardarPalabra(String palabraOrigen, String palabraTraducida, String idiomaDestino) throws IOException {
+        String rutaArchivo = obtenerRutaArchivo(idiomaDestino);
+
+        if (rutaArchivo == null) {
+            System.out.println("Idioma no soportado.");
+            return;
+        }
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(rutaArchivo, true))) {
+            bw.write(palabraOrigen + "," + idiomaDestino + "," + palabraTraducida);
+            bw.newLine();
+            System.out.println("Palabra guardada correctamente.");
+        }    }
+
+    private static String obtenerRutaArchivo(String idiomaDestino) {
+        switch (idiomaDestino.toLowerCase()) {
+            case "inglés":
+                return "src/main/resources/traducciones.txt";
+            case "francés":
+                return "src/main/resources/español_frances.txt";
+            case "italiano":
+                return "src/main/resources/español_italiano.txt";
+            default:
+                return null;
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Boton_Agregar;
@@ -585,9 +654,6 @@ public static String[][] leerArchivoAMatriz(String rutaArchivo) {
     private javax.swing.JButton Boton_Traducir;
     private javax.swing.JTextField Palabra;
     private javax.swing.JTextField Palabra_origen;
-    private javax.swing.JTextField Palabra_origen1;
-    private javax.swing.JTextField Palabra_origen2;
-    private javax.swing.JTextField Palabra_origen3;
     private javax.swing.JTextField Palabra_traducida;
     private javax.swing.JPanel agregar;
     private javax.swing.JPanel consulta;
@@ -612,6 +678,9 @@ public static String[][] leerArchivoAMatriz(String rutaArchivo) {
     private java.awt.Label label4;
     private javax.swing.JPanel menu;
     private javax.swing.JComboBox<String> menu_op;
+    private javax.swing.JTextField numeroFRANCES;
+    private javax.swing.JTextField numeroINGLES;
+    private javax.swing.JTextField numeroITALIANO;
     private javax.swing.JTextField traduccion;
     // End of variables declaration//GEN-END:variables
 }

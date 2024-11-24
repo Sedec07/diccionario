@@ -18,3 +18,8 @@ Puerta,Italiano,Porta
 Montana,Italiano,Montagna
 Rio,Italiano,Fiume
 Sol,Italiano,Sole
+disculpeme,Italiano,Mi scusi
+Cielo,Italiano,Tesoro
+Rio,Italiano,Fiume
+Arbol,Italiano,Albero
+Desayuno,Italiano,Colazione

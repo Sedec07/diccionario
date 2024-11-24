@@ -571,15 +571,15 @@
                   <EmptySpace pref="78" max="32767" attributes="0"/>
                   <Component id="jLabel6" min="-2" pref="72" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                  <Component id="Palabra_origen1" min="-2" pref="100" max="-2" attributes="0"/>
+                  <Component id="numeroINGLES" min="-2" pref="100" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabel10" min="-2" pref="98" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="Palabra_origen2" min="-2" pref="100" max="-2" attributes="0"/>
+                  <Component id="numeroFRANCES" min="-2" pref="100" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel11" min="-2" pref="98" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="Palabra_origen3" min="-2" pref="100" max="-2" attributes="0"/>
+                  <Component id="numeroITALIANO" min="-2" pref="100" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="336" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
@@ -599,10 +599,10 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="Palabra_origen2" pref="0" max="32767" attributes="0"/>
+                                  <Component id="numeroFRANCES" pref="0" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="Palabra_origen1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="numeroINGLES" alignment="0" max="32767" attributes="0"/>
                               <Component id="jLabel10" alignment="0" max="32767" attributes="0"/>
                               <Component id="jLabel6" min="-2" pref="36" max="-2" attributes="0"/>
                           </Group>
@@ -610,7 +610,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="Palabra_origen3" alignment="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="numeroITALIANO" alignment="0" pref="0" max="32767" attributes="0"/>
                               <Component id="jLabel11" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
@@ -633,7 +633,7 @@
             <Property name="text" type="java.lang.String" value="Conteo de Traducciones"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="Palabra_origen1">
+        <Component class="javax.swing.JTextField" name="numeroINGLES">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -663,7 +663,7 @@
             <Property name="text" type="java.lang.String" value="Franc&#xe9;s"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="Palabra_origen2">
+        <Component class="javax.swing.JTextField" name="numeroFRANCES">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -674,6 +674,9 @@
             <Property name="toolTipText" type="java.lang.String" value="Escribe la palabra con mayuscula incial"/>
             <Property name="actionCommand" type="java.lang.String" value="&lt;Not Set&gt;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="numeroFRANCESActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
@@ -684,7 +687,7 @@
             <Property name="text" type="java.lang.String" value="Italiano"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="Palabra_origen3">
+        <Component class="javax.swing.JTextField" name="numeroITALIANO">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">

@@ -18,3 +18,8 @@ Puerta,Inglés,Door
 Montana,Inglés,Mountain
 Rio,Inglés,River
 Sol,Inglés,Sun
+Cama,Inglés,Bed
+Carro,Inglés,Car
+Correr,Inglés,Run
+Bailar,Inglés,Dancing
+Lluvia,Inglés,Rain

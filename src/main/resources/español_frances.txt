@@ -18,3 +18,9 @@ Puerta,Francés,Porte
 Montana,Francés,Montagne
 Rio,Francés,Fleuve
 Sol,Francés,Soleil
+Pc,Francés,Ordinateur
+Celular,Francés,Cellulaire
+Audifonos,Francés,Ecouteurs
+Silla,Francés,Chaise
+Jugar,Francés,Jouer
+Correr,Francés,Courir
