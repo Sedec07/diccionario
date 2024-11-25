@@ -23,4 +23,3 @@ Celular,Francés,Cellulaire
 Audifonos,Francés,Ecouteurs
 Silla,Francés,Chaise
 Jugar,Francés,Jouer
-Correr,Francés,Courir

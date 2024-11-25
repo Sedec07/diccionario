@@ -13,6 +13,7 @@ public class NoFound extends javax.swing.JFrame {
     /**
      * Creates new form NoFound
      */
+    
     public NoFound() {
         initComponents();
     }

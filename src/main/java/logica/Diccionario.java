@@ -5,6 +5,7 @@ import java.util.ArrayList;
 /**
  *
  * @author Melqui Erazo
+ * 
  */
 public class Diccionario extends javax.swing.JFrame {
 
