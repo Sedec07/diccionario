@@ -5,10 +5,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import logica.Diccionario;
-
-import javax.swing.table.DefaultTableModel;
-//import static logica.Diccionario.leerArchivoAMatriz;
 
 /**
  *
@@ -22,6 +18,9 @@ public class Pantalla extends javax.swing.JFrame {
     private String[][] matriz;
     private String[][] espanol_italiano;
     private String[][] espanol_frances;
+    mensaje creado = new mensaje();
+    NoFound Nofound = new NoFound();
+    vacio Vacio = new vacio();
     public Pantalla() {
         matriz =leerArchivoAMatriz("src/main/resources/traducciones.txt");
         espanol_frances=leerArchivoAMatriz("src/main/resources/español_frances.txt");
@@ -511,6 +510,13 @@ public class Pantalla extends javax.swing.JFrame {
 String palabraOrigen = Palabra_origen.getText();
     String palabraTraducida = Palabra_traducida.getText();
     String idiomaDestino = (String) idioma_traduccion.getSelectedItem();
+    //mensaje de confirmar creacion
+    creado.setVisible(true);
+    creado.setLocationRelativeTo(null);
+    //se actualizan las matrices
+    matriz =leerArchivoAMatriz("src/main/resources/traducciones.txt");
+    espanol_frances=leerArchivoAMatriz("src/main/resources/español_frances.txt");
+    espanol_italiano=leerArchivoAMatriz("src/main/resources/español_italiano.txt");
 
     if (!palabraOrigen.isEmpty() && !palabraTraducida.isEmpty() && !idiomaDestino.equals("...")) {
         // Obtener la ruta del archivo según el idioma de destino
@@ -530,6 +536,8 @@ String palabraOrigen = Palabra_origen.getText();
         }
     } else {
         System.out.println("Por favor, complete todos los campos.");
+        Vacio.setVisible(true);
+        Vacio.setLocationRelativeTo(null);
     }
     }//GEN-LAST:event_Boton_AgregarActionPerformed
 
@@ -546,8 +554,11 @@ String palabraOrigen = Palabra_origen.getText();
     String idiomaOrigenSeleccionado = (String) idioma_origen.getSelectedItem();
     
     if (palabraIngresada.isEmpty() || idiomaDestinoSeleccionado.equals("...")) {
-        traduccion.setText("Por favor, ingrese una palabra y seleccione un idioma.");
-    } else {String resultado = buscarTraduccion(palabraIngresada, idiomaDestinoSeleccionado, idiomaOrigenSeleccionado);}
+        traduccion.setText("");
+        Vacio.setVisible(true);
+        Vacio.setLocationRelativeTo(null);
+    } else {String resultado = buscarTraduccion(palabraIngresada, idiomaDestinoSeleccionado, idiomaOrigenSeleccionado);
+    traduccion.setText(resultado);}
     }//GEN-LAST:event_Boton_TraducirActionPerformed
 
     private void Boton_LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_LimpiarActionPerformed
@@ -574,13 +585,14 @@ String palabraOrigen = Palabra_origen.getText();
 
 //buscar traduccion
 private String buscarTraduccion(String palabra, String idiomaDestino, String idiomaOrigen) {
+    String palabra_temp = null;
     if(idiomaOrigen.equals("Español") && idiomaDestino.equals("Inglés") ){
     for (String[] traduccion : matriz ) {
         if (traduccion[0].equalsIgnoreCase(palabra) && traduccion[1].equalsIgnoreCase(idiomaDestino)) {
             return traduccion[2];
         }
     }
-        
+      
     } else { if(idiomaOrigen.equals("Español") && idiomaDestino.equals("Italiano") ){
         for (String[] traduccion : espanol_italiano ) {
         if (traduccion[0].equalsIgnoreCase(palabra) && traduccion[1].equalsIgnoreCase(idiomaDestino)) {
@@ -593,13 +605,117 @@ private String buscarTraduccion(String palabra, String idiomaDestino, String idi
             return traduccion[2];
         }
     }
-    }} }
-    for (String[] traduccion : matriz ) {
-        if (traduccion[0].equalsIgnoreCase(palabra) && traduccion[1].equalsIgnoreCase(idiomaDestino)) {
+    }} } //ingles-italiano
+    if(idiomaOrigen.equals("Inglés") && idiomaDestino.equals("Italiano") ){
+        
+        for (String [] traduccion : matriz ) {
+        if (traduccion[2].equalsIgnoreCase(palabra) && traduccion[1].equalsIgnoreCase("Inglés")) {
+            palabra_temp = traduccion[0];
+        }
+    }
+        for (String [] traduccion : espanol_italiano ) {
+        if (traduccion[0].equalsIgnoreCase(palabra_temp) && traduccion[1].equalsIgnoreCase(idiomaDestino)) {
             return traduccion[2];
         }
     }
-    return "No se encontró la traducción.";
+        
+    } //traducir ingles-frances
+    if(idiomaOrigen.equals("Inglés") && idiomaDestino.equals("Francés") ){
+        
+        for (String [] traduccion : matriz ) {
+        if (traduccion[2].equalsIgnoreCase(palabra) && traduccion[1].equalsIgnoreCase("Inglés")) {
+            palabra_temp = traduccion[0];
+        }
+    }
+        for (String [] traduccion : espanol_frances ) {
+        if (traduccion[0].equalsIgnoreCase(palabra_temp) && traduccion[1].equalsIgnoreCase(idiomaDestino)) {
+            return traduccion[2];
+        }
+    }
+    }
+    // traducir ingles-español
+    if(idiomaOrigen.equals("Inglés") && idiomaDestino.equals("Español") ){
+    for (String[] traduccion : matriz ) {
+        if (traduccion[2].equalsIgnoreCase(palabra) && traduccion[1].equalsIgnoreCase("Inglés")) {
+            return traduccion[0];
+        }
+    } 
+    }
+    //traducir frances-ingles
+    if(idiomaOrigen.equals("Francés") && idiomaDestino.equals("Inglés") ){
+        
+        for (String [] traduccion : espanol_frances ) {
+        if (traduccion[2].equalsIgnoreCase(palabra) && traduccion[1].equalsIgnoreCase("Francés")) {
+            palabra_temp = traduccion[0];
+        }
+    }
+        for (String [] traduccion : matriz ) {
+        if (traduccion[0].equalsIgnoreCase(palabra_temp) && traduccion[1].equalsIgnoreCase(idiomaDestino)) {
+            return traduccion[2];
+        }
+    } 
+    }
+    //traducir frances-italiano
+    if(idiomaOrigen.equals("Francés") && idiomaDestino.equals("Italiano") ){
+        
+        for (String [] traduccion : espanol_frances ) {
+        if (traduccion[2].equalsIgnoreCase(palabra) && traduccion[1].equalsIgnoreCase("Francés")) {
+            palabra_temp = traduccion[0];
+        }
+    }
+        for (String [] traduccion : espanol_italiano ) {
+        if (traduccion[0].equalsIgnoreCase(palabra_temp) && traduccion[1].equalsIgnoreCase(idiomaDestino)) {
+            return traduccion[2];
+        }
+    } 
+    }
+    //traducir frances-español
+    if(idiomaOrigen.equals("Francés") && idiomaDestino.equals("Español") ){
+      for (String[] traduccion : espanol_frances) {
+        if (traduccion[2].equalsIgnoreCase(palabra) && traduccion[1].equalsIgnoreCase("Francés")) {
+            return traduccion[0];
+        }
+    } 
+    }
+    //traducir italiano-frances
+    if(idiomaOrigen.equals("Italiano") && idiomaDestino.equals("Francés") ){
+        
+        for (String [] traduccion : espanol_italiano ) {
+        if (traduccion[2].equalsIgnoreCase(palabra) && traduccion[1].equalsIgnoreCase("Italiano")) {
+            palabra_temp = traduccion[0];
+        }
+    }
+        for (String [] traduccion : espanol_frances ) {
+        if (traduccion[0].equalsIgnoreCase(palabra_temp) && traduccion[1].equalsIgnoreCase(idiomaDestino)) {
+            return traduccion[2];
+        }
+    } 
+    }
+    //traducir italiano-ingles
+    if(idiomaOrigen.equals("Italiano") && idiomaDestino.equals("Inglés") ){
+        
+        for (String [] traduccion : espanol_italiano ) {
+        if (traduccion[2].equalsIgnoreCase(palabra) && traduccion[1].equalsIgnoreCase("Italiano")) {
+            palabra_temp = traduccion[0];
+        }
+    }
+        for (String [] traduccion : matriz ) {
+        if (traduccion[0].equalsIgnoreCase(palabra_temp) && traduccion[1].equalsIgnoreCase(idiomaDestino)) {
+            return traduccion[2];
+        }
+    } 
+    }
+    //traducir italiano-español
+    if(idiomaOrigen.equals("Italiano") && idiomaDestino.equals("Español") ){
+      for (String[] traduccion : espanol_italiano) {
+        if (traduccion[2].equalsIgnoreCase(palabra) && traduccion[1].equalsIgnoreCase("Italiano")) {
+            return traduccion[0];
+        }
+    } 
+    }
+    Nofound.setVisible(true);
+    Nofound.setLocationRelativeTo(null);
+    return "";
 }
 public static String[][] leerArchivoAMatriz(String rutaArchivo) {
         ArrayList<String[]> listaTemporal = new ArrayList<>();

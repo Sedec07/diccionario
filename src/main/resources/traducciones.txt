@@ -23,3 +23,4 @@ Carro,Inglés,Car
 Correr,Inglés,Run
 Bailar,Inglés,Dancing
 Lluvia,Inglés,Rain
+Meza,Inglés,Table
